@@ -36,12 +36,11 @@ public class Service {
         this.id = id;
     }
 
-    @NotNull
     public int getDuration() {
         return duration;
     }
 
-    public void setDuration(@NotNull int duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 

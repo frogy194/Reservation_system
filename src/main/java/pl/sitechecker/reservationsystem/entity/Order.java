@@ -2,6 +2,8 @@ package pl.sitechecker.reservationsystem.entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
+import org.springframework.stereotype.Component;
+import pl.sitechecker.reservationsystem.repository.ServiceProviderRepository;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -14,6 +16,8 @@ import java.util.List;
 @Entity
 @Table(name = "orders")
 public class Order {
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +53,7 @@ public class Order {
     }
 
     public void setDate(@NotNull LocalDate date) {
-        this.date = date;
+           this.date = date;
     }
 
     @NotNull

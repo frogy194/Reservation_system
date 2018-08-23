@@ -28,7 +28,7 @@
 
         <div>
             <form:label path="description">Description</form:label>
-            <form:input path="description"></form:input>
+            <form:textarea path="description"></form:textarea>
         </div>
 
         <div>

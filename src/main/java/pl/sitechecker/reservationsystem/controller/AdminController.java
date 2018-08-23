@@ -1,6 +1,7 @@
 package pl.sitechecker.reservationsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,6 +11,7 @@ import pl.sitechecker.reservationsystem.entity.ServiceProvider;
 import pl.sitechecker.reservationsystem.repository.ServiceProviderRepository;
 import pl.sitechecker.reservationsystem.repository.ServiceRepository;
 
+import javax.validation.Path;
 import javax.validation.Valid;
 
 @Controller
@@ -30,13 +32,30 @@ public class AdminController {
 
     @PostMapping("/addservice")
     @ResponseBody
-    public String makeNewTweet(@Valid Service service, BindingResult result) {
+    public String makeNewService(@Valid Service service, BindingResult result) {
         if (result.hasErrors()) {
             return "false";
         }
         this.serviceRepository.save(service);
         return "Success" + "<meta http-equiv=\"refresh\" content=\"3; url=http://localhost:8080/adm\" />";
     }
+
+    @GetMapping("/editservice/{id}")
+    public String editServ(@PathVariable long id, Model model) {
+        model.addAttribute("service", serviceRepository.findById(id));
+        return "editservice";
+    }
+
+    @PostMapping("/editservice/{id}")
+    @ResponseBody
+    public String editSaveService(@Valid Service service, BindingResult result) {
+        if (result.hasErrors()) {
+            return "false";
+        }
+        this.serviceRepository.save(service);
+        return "Success" + "<meta http-equiv=\"refresh\" content=\"3; url=http://localhost:8080/adm\" />";
+    }
+
     @GetMapping("/addserviceprovider")
     public String addServProv(Model model) {
         model.addAttribute("serviceprovider", new ServiceProvider());

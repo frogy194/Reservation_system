@@ -20,7 +20,12 @@
         <ul>
             <li><a class="myButton centerman" href="/adm/addservice">Add service</a></li>
             <br>
+            <li><a class="myButton centerman" href="/adm/editservice/1>Edit service</a></li>
+            <br>
             <li><a class="myButton centerman" href="/adm/addserviceprovider">Add service provider</a> </li>
+            <br>
+            <li><a class="myButton centerman" href="/adm/editserviceprovider/1">Add service</a></li>
+
         </ul>
     </div>
 </div>

@@ -4,6 +4,7 @@
 //
 //import javax.persistence.*;
 //import javax.validation.constraints.Size;
+//import java.time.DayOfWeek;
 //import java.time.LocalDate;
 //import java.time.LocalTime;
 //import java.util.ArrayList;
@@ -15,7 +16,7 @@
 //    @Id
 //    private LocalDate date;
 //    @Size(max = 15)
-//    private int dayOfWeek = this.date.getDayOfWeek().getValue();
+//    private DayOfWeek dayOfWeek;
 //
 //    @OneToMany
 //    @Nullable
@@ -40,12 +41,20 @@
 //        this.date = date;
 //    }
 //
-//    public int getDayOfWeek() {
+//    public DayOfWeek getDayOfWeek() {
 //        return dayOfWeek;
 //    }
 //
-//    public void setDayOfWeek(int dayOfWeek) {
+//    public void setDayOfWeek(DayOfWeek dayOfWeek) {
 //        this.dayOfWeek = dayOfWeek;
+//    }
+//
+//    public ServiceProvider getServiceProvider() {
+//        return serviceProvider;
+//    }
+//
+//    public void setServiceProvider(ServiceProvider serviceProvider) {
+//        this.serviceProvider = serviceProvider;
 //    }
 //
 //    public List<Order> getOrders() {

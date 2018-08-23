@@ -152,5 +152,4 @@ public class ServiceProvider {
         this.workingHoursSun = workingHoursSun;
     }
 
-
 }
