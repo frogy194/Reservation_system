@@ -1,4 +1,10 @@
 package pl.sitechecker.reservationsystem.repository;
 
-public class ServiceRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import pl.sitechecker.reservationsystem.entity.Service;
+import java.util.List;
+
+public interface ServiceRepository extends JpaRepository<Service,Long> {
+    List<Service> findAllById(long id);
+
 }
