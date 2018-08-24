@@ -1,0 +1,73 @@
+.top {
+	border-top: 2px solid black;
+}
+.top1 {
+	border-top: 4px solid black;
+}
+.bottom {
+	border-bottom: 2px solid black;
+}
+.bottom1 {
+	border-bottom: 4px solid black;
+}
+.left {
+	border-left: 2px solid black;
+}
+.left1 {
+	border-left: 4px solid black;
+}
+.right {
+	border-right: 2px solid black;
+}
+.right1 {
+	border-right: 4px solid black;
+}
+.st {
+	border-top: 1px solid aquamarine;
+}
+.sb {
+	border-bottom: 1px solid aquamarine;
+}
+.sl {
+	border-left: 1px solid aquamarine;
+}
+.sr {
+	border-right: 1px solid aquamarine;
+}
+
+
+
+
+
+td {
+	width: 35px;
+	height: 35px;
+	border: 1px solid black;
+	display: inline-block;
+	padding-bottom: none;
+}
+
+input {
+	font-size: 30px;
+	text-align: center;
+   width:96%;
+   height:96%;
+   padding:2% 2%; 
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+textarea:focus, input:focus{
+      border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+

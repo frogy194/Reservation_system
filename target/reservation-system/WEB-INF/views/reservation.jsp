@@ -8,9 +8,14 @@
           rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script>  function myFunction() {
+        var popup = document.getElementById("mypopup");
+        popup.classList.toggle("show");
+    }</script>
     <link href="<c:url value="/resources/css/basic.css" />" rel="stylesheet">
     <%@ include file="parts/meta.jsp" %>
     <title>Home Page</title>
+
     <div class="header-panel">
         <ul>
             <li><a class="myButton">Home</a></li>
@@ -47,12 +52,18 @@
                     <c:forEach items="${hoursMondayOnService1}" var="time">
                       <c:choose>
                         <c:when test="${time != 0}">
+                            <%--<c:forEach items="${orders}" var="order">--%>
+                                <%--<c:choose>--%>
+                                    <%--<c:when test="${order.date == time">--%>
+                                        <%--siema--%>
+                                    <%--</c:when>--%>
+                                <%--</c:choose>--%>
+                            <%--</c:forEach>--%>
                         <tr class="hours Monday 1" hidden>
                             <th>${time}:00</th>
                             <th class="clicker"></th>
                         </tr>
                         </c:when>
-                          <c:otherwise>Nie pracujemy w podany dzien</c:otherwise>
                       </c:choose>
                     </c:forEach>
                     <c:forEach items="${hoursTuesdayOnService1}" var="time">
@@ -62,7 +73,7 @@
                             <th>${time}:00</th>
                             <th class="clicker"></th>
                         </tr>
-                        </c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise>
+                        </c:when>
                         </c:choose>
                     </c:forEach>
                     <c:forEach items="${hoursWednesdayOnService1}" var="time">
@@ -72,7 +83,7 @@
                             <th>${time}:00</th>
                             <th class="clicker"></th>
                         </tr>
-                        </c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise>
+                        </c:when>
                         </c:choose>
                     </c:forEach>
                     <c:forEach items="${hoursThursdayOnService1}" var="time">
@@ -82,26 +93,26 @@
                             <th>${time}:00</th>
                             <th class="clicker"></th>
                         </tr>
-                        </c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise>
+                        </c:when>
                         </c:choose>
                     </c:forEach>
                     <c:forEach items="${hoursFridayOnService1}" var="time"> <c:choose><c:when test="${time != 0}">
                         <tr class="hours Friday 1" hidden>
                             <th>${time}:00</th>
                             <th class="clicker"></th>
-                        </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                        </tr></c:when></c:choose>
                     </c:forEach>
                     <c:forEach items="${hoursSaturdayOnService1}" var="time"> <c:choose><c:when test="${time != 0}">
                         <tr class="hours Saturday 1" hidden>
                             <th>${time}:00</th>
                             <th class="clicker"></th>
-                        </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                        </tr></c:when></c:choose>
                     </c:forEach>
                     <c:forEach items="${hoursSundayOnService1}" var="time"> <c:choose><c:when test="${time != 0}">
                         <tr class="hours Sunday 1" hidden>
                             <th>${time}:00</th>
                             <th class="clicker"></th>
-                        </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                        </tr></c:when></c:choose>
                     </c:forEach>
 
 
@@ -109,43 +120,43 @@
                             <tr class="hours Monday 2" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
                         <c:forEach items="${hoursTuesdayOnService2}" var="time"> <c:choose><c:when test="${time != 0}">
                             <tr class="hours Tuesday 2" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
                         <c:forEach items="${hoursWednesdayOnService2}" var="time"> <c:choose><c:when test="${time != 0}">
                             <tr class="hours Wednesday 2" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
                         <c:forEach items="${hoursThursdayOnService2}" var="time"> <c:choose><c:when test="${time != 0}">
                             <tr class="hours Thursday 2" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
                         <c:forEach items="${hoursFridayOnService2}" var="time"> <c:choose><c:when test="${time != 0}">
                             <tr class="hours Friday 2" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
                         <c:forEach items="${hoursSaturdayOnService2}" var="time"> <c:choose><c:when test="${time != 0}">
                             <tr class="hours Saturday 2" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
                         <c:forEach items="${hoursSundayOnService2}" var="time"> <c:choose><c:when test="${time != 0}">
                             <tr class="hours Sunday 2" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
 
 
@@ -155,43 +166,43 @@
                             <tr class="hours Monday 3" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
                         <c:forEach items="${hoursTuesdayOnService3}" var="time"> <c:choose><c:when test="${time != 0}">
                             <tr class="hours Tuesday 3" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
                         <c:forEach items="${hoursWednesdayOnService3}" var="time"> <c:choose><c:when test="${time != 0}">
                             <tr class="hours Wednesday 3" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
                         <c:forEach items="${hoursThursdayOnService3}" var="time"> <c:choose><c:when test="${time != 0}">
                             <tr class="hours Thursday 3" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
                         <c:forEach items="${hoursFridayOnService3}" var="time"> <c:choose><c:when test="${time != 0}">
                             <tr class="hours Friday 3" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
                         <c:forEach items="${hoursSaturdayOnService3}" var="time"> <c:choose><c:when test="${time != 0}">
                             <tr class="hours Saturday 3" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
                         <c:forEach items="${hoursSundayOnService3}" var="time"> <c:choose><c:when test="${time != 0}">
                             <tr class="hours Sunday 3" hidden>
                                 <th>${time}:00</th>
                                 <th class="clicker"></th>
-                            </tr></c:when><c:otherwise>Nie pracujemy w podany dzien</c:otherwise></c:choose>
+                            </tr></c:when></c:choose>
                         </c:forEach>
 
 
@@ -213,6 +224,7 @@
             </td>
         </tr>
     </table>
+
 
 </div>
 <%@ include file="parts/footer.jsp" %>

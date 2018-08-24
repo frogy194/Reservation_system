@@ -3,10 +3,12 @@ package pl.sitechecker.reservationsystem.entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 import pl.sitechecker.reservationsystem.repository.ServiceProviderRepository;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.lang.invoke.SerializedLambda;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -24,16 +26,17 @@ public class Order {
     private long id;
 
     @NotNull
-    private LocalDate date;
+    @Pattern(regexp = "\\d{1,2}\\/\\d{1,2}\\/\\d{4}")
+    private String date;
     @NotNull
-    private LocalTime time;
+    private String time;
 
 //    private List<Service> services = new ArrayList<>();
 
 //    id usluga data godzina
 
-    @OneToMany
-    private List<Service> services = new ArrayList<>();
+    @OneToOne
+    private Service service;
 
 
     public Order() {
@@ -48,38 +51,28 @@ public class Order {
     }
 
     @NotNull
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(@NotNull LocalDate date) {
-           this.date = date;
+    public void setDate(@NotNull String date) {
+        this.date = date;
     }
 
     @NotNull
-    public LocalTime getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(@NotNull LocalTime time) {
+    public void setTime(@NotNull String time) {
         this.time = time;
     }
 
-    public List<Service> getServices() {
-        return services;
+    public Service getService() {
+        return service;
     }
 
-    public void setServices(List<Service> services) {
-        this.services = services;
+    public void setService(Service service) {
+        this.service = service;
     }
-
-    public LocalTime getTotalDuration() {
-        int result = 0;
-        for (Service service : this.services) {
-            result += service.getDuration();
-        }
-        return LocalTime.of(result/60,result%60);
-    }
-
-
 }

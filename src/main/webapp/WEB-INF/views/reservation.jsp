@@ -8,9 +8,14 @@
           rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script>  function myFunction() {
+        var popup = document.getElementById("mypopup");
+        popup.classList.toggle("show");
+    }</script>
     <link href="<c:url value="/resources/css/basic.css" />" rel="stylesheet">
     <%@ include file="parts/meta.jsp" %>
     <title>Home Page</title>
+
     <div class="header-panel">
         <ul>
             <li><a class="myButton">Home</a></li>
@@ -47,6 +52,13 @@
                     <c:forEach items="${hoursMondayOnService1}" var="time">
                       <c:choose>
                         <c:when test="${time != 0}">
+                            <%--<c:forEach items="${orders}" var="order">--%>
+                                <%--<c:choose>--%>
+                                    <%--<c:when test="${order.date == time">--%>
+                                        <%--siema--%>
+                                    <%--</c:when>--%>
+                                <%--</c:choose>--%>
+                            <%--</c:forEach>--%>
                         <tr class="hours Monday 1" hidden>
                             <th>${time}:00</th>
                             <th class="clicker"></th>
@@ -212,6 +224,7 @@
             </td>
         </tr>
     </table>
+
 
 </div>
 <%@ include file="parts/footer.jsp" %>
