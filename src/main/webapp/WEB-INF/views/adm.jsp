@@ -20,11 +20,11 @@
         <ul>
             <li><a class="myButton centerman" href="/adm/addservice">Add service</a></li>
             <br>
-            <li><a class="myButton centerman" href="/adm/editservice/1>Edit service</a></li>
+            <li><a class="myButton centerman" href="/adm/editservice/1" style="pointer-events: none">Edit service</a></li>
             <br>
             <li><a class="myButton centerman" href="/adm/addserviceprovider">Add service provider</a> </li>
             <br>
-            <li><a class="myButton centerman" href="/adm/editserviceprovider/1">Add service</a></li>
+            <li><a class="myButton centerman" href="/adm/editserviceprovider/1" style="pointer-events: none">Edit service provider</a></li>
 
         </ul>
     </div>

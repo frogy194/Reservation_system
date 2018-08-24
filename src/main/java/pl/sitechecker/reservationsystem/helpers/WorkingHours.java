@@ -1,57 +1,34 @@
-//package pl.sitechecker.reservationsystem.helpers;
-//
-//
-//import javax.persistence.Converter;
-//import java.time.LocalTime;
-//
-//public class WorkingHours {
-//    private int startingHour;
-//    private int startingMinute;
-//    private int endingHour;
-//    private int endingMinute;
-//
-//    public WorkingHours() {
-//
-//    }
-//
-//    public LocalTime startTime() {
-//
-//        return LocalTime.of(this.startingHour,this.startingMinute);
-//    }
-//
-//    public LocalTime endTime() {
-//        return LocalTime.of(this.endingHour, this.endingMinute);
-//    }
-//
-//    public int getStartingHour() {
-//        return startingHour;
-//    }
-//
-//    public void setStartingHour(int startingHour) {
-//        this.startingHour = startingHour;
-//    }
-//
-//    public int getStartingMinute() {
-//        return startingMinute;
-//    }
-//
-//    public void setStartingMinute(int startingMinute) {
-//        this.startingMinute = startingMinute;
-//    }
-//
-//    public int getEndingHour() {
-//        return endingHour;
-//    }
-//
-//    public void setEndingHour(int endingHour) {
-//        this.endingHour = endingHour;
-//    }
-//
-//    public int getEndingMinute() {
-//        return endingMinute;
-//    }
-//
-//    public void setEndingMinute(int endingMinute) {
-//        this.endingMinute = endingMinute;
-//    }
-//}
+package pl.sitechecker.reservationsystem.helpers;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
+public class WorkingHours {
+
+    public static List<Integer> getSeparetedHours(int start, int end) {
+        List<Integer> list = new ArrayList<>();
+        if (start == 0 && end == 0) {
+            List<Integer> empty = new ArrayList<>();
+            empty.add(0);
+            return empty;
+        }
+
+        for (int i = start; i < end; i++ ) {
+            list.add(i);
+        }
+
+        return list;
+    }
+
+
+
+
+
+
+
+
+
+}
