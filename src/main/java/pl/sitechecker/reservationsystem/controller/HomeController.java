@@ -228,4 +228,9 @@ public class HomeController {
     public String sudo(){
         return "sudoku";
     }
+
+    @GetMapping("/main")
+    public String fast(){
+        return "main";
+    }
 }
