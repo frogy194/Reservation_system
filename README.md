@@ -1,10 +1,10 @@
 # Reservation-system
 
-##Main goals :  
+## Main goals :  
 
   Ability for client to book a service at specific date from selected service provider, when it is available.  
 
-##Project assumptions :  
+## Project assumptions :  
 
   3 user types :  
     1. Administrator  
@@ -22,7 +22,7 @@
       * Can add reservations which apply to him.  
       * Can edit / remove his reservations atleast 24h before reservation date.  
   
-##Example :   
+## Example :   
 
   Administrator have a salon and 2 workers (Filip and Adam) in his company.  
   Adam is a barber, same as Filip, but he is a great make-up artist aswell.   
