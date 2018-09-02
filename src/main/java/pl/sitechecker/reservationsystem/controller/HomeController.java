@@ -48,14 +48,13 @@ public class HomeController {
         List<Service> services = serviceRepository.findAll();
         model.addAttribute("services", services);
         int monMin = 0, monMax = 0, tueMin = 0, tueMax = 0, wedMin = 0, wedMax = 0, thuMax = 0, thuMin = 0, friMax = 0, friMin = 0, satMin = 0, satMax = 0, sunMax = 0, sunMin = 0;
-        List<Integer[]> list = new ArrayList<>();
+
 
         for (Service s : services) {
 
-            List<Integer> monArray = new ArrayList<>(), tueArray = null, wedArray = null, thuArray = null, friArray = null, satArray = null, sunArray = null;
             int monStart = 24, monEnd = 0, tueStart = 24, tueEnd = 0,wedStart = 24, wedEnd = 0,thuStart = 24, thuEnd = 0,friStart = 24, friEnd = 0,satStart = 24, satEnd = 0,sunStart = 24, sunEnd = 0;
             for (ServiceProvider x : serviceProviderRepository.findAllByServices(s)) {
-                //@TODO make method in WorkingHours for this bullshit
+                //@TODO make method in WorkingHours for this nonsense
                 if (x.getWorkingHoursMon() != null) {
                     monMin = Integer.parseInt(x.getWorkingHoursMon().substring(0, 2));
                     monMax = Integer.parseInt(x.getWorkingHoursMon().substring(6, 8));
@@ -165,19 +164,19 @@ public class HomeController {
 
 
             }
-            monArray = WorkingHours.getSeparetedHours(monStart, monEnd);
+            List<Integer> monArray = WorkingHours.getSeparetedHours(monStart, monEnd);
             model.addAttribute("hoursMondayOnService"+s.getId(), monArray);
-            tueArray = WorkingHours.getSeparetedHours(tueStart, tueEnd);
+            List<Integer> tueArray = WorkingHours.getSeparetedHours(tueStart, tueEnd);
             model.addAttribute("hoursTuesdayOnService"+s.getId(), tueArray);
-            wedArray = WorkingHours.getSeparetedHours(wedStart, wedEnd);
+            List<Integer> wedArray = WorkingHours.getSeparetedHours(wedStart, wedEnd);
             model.addAttribute("hoursWednesdayOnService"+s.getId(), wedArray);
-            thuArray = WorkingHours.getSeparetedHours(thuStart, thuEnd);
+            List<Integer> thuArray = WorkingHours.getSeparetedHours(thuStart, thuEnd);
             model.addAttribute("hoursThursdayOnService"+s.getId(), thuArray);
-            friArray = WorkingHours.getSeparetedHours(friStart, friEnd);
+            List<Integer> friArray = WorkingHours.getSeparetedHours(friStart, friEnd);
             model.addAttribute("hoursFridayOnService"+s.getId(), friArray);
-            satArray = WorkingHours.getSeparetedHours(satStart, satEnd);
+            List<Integer> satArray = WorkingHours.getSeparetedHours(satStart, satEnd);
             model.addAttribute("hoursSaturdayOnService"+s.getId(), satArray);
-            sunArray = WorkingHours.getSeparetedHours(sunStart, sunEnd);
+            List<Integer> sunArray = WorkingHours.getSeparetedHours(sunStart, sunEnd);
             model.addAttribute("hoursSundayOnService"+s.getId(), sunArray);
 
         }
@@ -225,12 +224,13 @@ public class HomeController {
     }
 
     @GetMapping("/sudoku")
-    public String sudo(){
+    public String sudo(Model model){
+        model.addAttribute("elo");
         return "sudoku";
     }
 
     @GetMapping("/main")
     public String fast(){
-        return "main";
+        return "calendar";
     }
 }

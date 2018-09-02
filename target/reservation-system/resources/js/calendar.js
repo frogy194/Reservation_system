@@ -2,6 +2,9 @@
 $(document).ready(function () {
 
 
+    $('#dp3').datepicker();
+
+
     $(document).on("change", function () {
 
         var data = $('#datepicker-2').datepicker({dateFormat: 'dd-mm-yy'}).val();
