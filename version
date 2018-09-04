@@ -1,0 +1,10 @@
+1.0.1
+Major bugs :
+ - reservation.jsp not work as intended (need to implement method for adding new reservation, displaying already booked dates, transfer model from MVC to js).
+
+To change :
+ - add login / register module to project (Spring security).
+ - add validation on server side for reservations.
+ - site frontend style.
+ - admin panel (missing few options).
+

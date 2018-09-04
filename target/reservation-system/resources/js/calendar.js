@@ -1,16 +1,18 @@
 
 $(document).ready(function () {
 
+    $('#datetimepicker12').on('dp.change', function() {
 
-    $('#dp3').datepicker();
+        $(".inputhere").text($('#datetimepicker12').data('DateTimePicker').date().format('LL'));
+
+    });
 
 
     $(document).on("change", function () {
 
-        var data = $('#datepicker-2').datepicker({dateFormat: 'dd-mm-yy'}).val();
 
-        var nice =  $('#datepicker-2').datepicker('getDate');
-        var day = $.datepicker.formatDate('DD', nice);
+
+        $('#datetimepicker12').data('DateTimePicker').date().toDate();
 
         $(".inputhere").text(data + " " + day);
 
@@ -20,11 +22,11 @@ $(document).ready(function () {
         $("." + day + "." + $('#selector').val()).removeAttr('hidden');
 
 
-    })
+    });
     $("tr.hours").find("th.clicker").on("click",function (e) {
         window.location.replace("http://localhost:8080/reservation/add/" + $('#datepicker-2').datepicker({dateFormat: 'dd-mm-yy'}).val() + "/" + $(e.target).prev().text() + "/" + $('#selector').val());
     })
 
 
 
-})
+});

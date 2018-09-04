@@ -54,7 +54,7 @@ public class HomeController {
 
             int monStart = 24, monEnd = 0, tueStart = 24, tueEnd = 0,wedStart = 24, wedEnd = 0,thuStart = 24, thuEnd = 0,friStart = 24, friEnd = 0,satStart = 24, satEnd = 0,sunStart = 24, sunEnd = 0;
             for (ServiceProvider x : serviceProviderRepository.findAllByServices(s)) {
-                //@TODO make method in WorkingHours for this nonsense
+                //@TODO make method in WorkingHours for this .
                 if (x.getWorkingHoursMon() != null) {
                     monMin = Integer.parseInt(x.getWorkingHoursMon().substring(0, 2));
                     monMax = Integer.parseInt(x.getWorkingHoursMon().substring(6, 8));
