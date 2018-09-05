@@ -1,4 +1,8 @@
-1.0.1
+1.0.11
+ - removed unnecessary files from other project.
+
+
+1.0.10
 Major bugs :
  - reservation.jsp not work as intended (need to implement method for adding new reservation, displaying already booked dates, transfer model from MVC to js).
 
