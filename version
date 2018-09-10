@@ -1,3 +1,7 @@
+1.0.12
+ - added method for reservation to send selected date to server (still missing full responsive server method).
+
+
 1.0.11
  - removed unnecessary files from other project.
 
