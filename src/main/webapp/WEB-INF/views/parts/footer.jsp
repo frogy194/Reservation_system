@@ -11,7 +11,7 @@
 <div class="panel panel-default">
 
     <div class="panel-footer container">
-        <span class="text-muted">Created by frogy </span>
+        <span class="createdBy">Created by frogy </span>
     </div>
 </div>
 <script type="text/javascript" src="<c:url value="/resources/js/menubar.js" />"></script>

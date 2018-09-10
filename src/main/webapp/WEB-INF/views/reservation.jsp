@@ -29,17 +29,20 @@
     </thead>
     <tr>
         <td class="hideme" >
-            <form class="formreserv" method="post">
+            <form id="formreserv" method="post">
                 <label>Choose your service :</label>
                 <br>
-                <select name="selectedserv" id="selector">
+                <select name="selectedserv">
                     <c:forEach items="${services}" var="service">
                         <option value="${service.id}">${service.name}</option>
                     </c:forEach>
-
                 </select>
+                <input id="dayOfWeek" name="dayOfWeek" value="0" hidden />
+                <input id="dayOfMonth" name="dayOfMonth" value="0" hidden />
+                <input id="month" name="month" value="0" hidden />
+                <input id="year" name="year" value="0" hidden />
+                <input id="sub1" type="submit" value="Submit" hidden />
                 <br>
-                <input type="submit">
             </form>
 
         </td>

@@ -15,6 +15,20 @@
 <link rel="stylesheet" href="/resources/bower_components/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/resources/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+    .createdBy {
+        font-family: Georgia, serif;
+        font-size: 22px;
+        letter-spacing: 0px;
+        word-spacing: 2px;
+        color: #EFEFEF;
+        font-weight: normal;
+        text-decoration: none;
+        font-style: normal;
+        font-variant: normal;
+        text-transform: none;
+    }
+</style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-faded">
 

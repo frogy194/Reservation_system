@@ -47,139 +47,6 @@ public class HomeController {
 
         List<Service> services = serviceRepository.findAll();
         model.addAttribute("services", services);
-        int monMin = 0, monMax = 0, tueMin = 0, tueMax = 0, wedMin = 0, wedMax = 0, thuMax = 0, thuMin = 0, friMax = 0, friMin = 0, satMin = 0, satMax = 0, sunMax = 0, sunMin = 0;
-
-
-        for (Service s : services) {
-
-            int monStart = 24, monEnd = 0, tueStart = 24, tueEnd = 0,wedStart = 24, wedEnd = 0,thuStart = 24, thuEnd = 0,friStart = 24, friEnd = 0,satStart = 24, satEnd = 0,sunStart = 24, sunEnd = 0;
-            for (ServiceProvider x : serviceProviderRepository.findAllByServices(s)) {
-                //@TODO make method in WorkingHours for this .
-                if (x.getWorkingHoursMon() != null) {
-                    monMin = Integer.parseInt(x.getWorkingHoursMon().substring(0, 2));
-                    monMax = Integer.parseInt(x.getWorkingHoursMon().substring(6, 8));
-
-                    if (monMin < monStart) {
-                        monStart = monMin;
-                    }
-                    if (monMax > monEnd) {
-                        monEnd = monMax;
-                    }
-                }
-                if (monStart == 24 && monEnd == 0){
-                    monStart = 0;
-                    monEnd = 0;
-                }
-
-                if (x.getWorkingHoursTue() != null) {
-                    tueMin = Integer.parseInt(x.getWorkingHoursTue().substring(0, 2));
-                    tueMax = Integer.parseInt(x.getWorkingHoursTue().substring(6, 8));
-
-                    if (tueMin < tueStart) {
-                        tueStart = tueMin;
-                    }
-                    if (tueMax > tueEnd) {
-                        tueEnd = tueMax;
-                    }
-                }
-                if (tueStart == 24 && tueEnd == 0){
-                    tueStart = 0;
-                    tueEnd = 0;
-                }
-                if (x.getWorkingHoursWed() != null) {
-                    wedMin = Integer.parseInt(x.getWorkingHoursWed().substring(0, 2));
-                    wedMax = Integer.parseInt(x.getWorkingHoursWed().substring(6, 8));
-
-                    if (wedMin < wedStart) {
-                        wedStart = wedMin;
-                    }
-                    if (wedMax > wedEnd) {
-                        wedEnd = wedMax;
-                    }
-                }
-                if (wedStart == 24 && wedEnd == 0){
-                    wedStart = 0;
-                    wedEnd = 0;
-                }
-                if (x.getWorkingHoursThu() != null) {
-                    thuMin = Integer.parseInt(x.getWorkingHoursThu().substring(0, 2));
-                    thuMax = Integer.parseInt(x.getWorkingHoursThu().substring(6, 8));
-
-                    if (thuMin < thuStart) {
-                        thuStart = thuMin;
-                    }
-                    if (thuMax > thuEnd) {
-                        thuEnd = thuMax;
-                    }
-                }
-                if (thuStart == 24 && thuEnd == 0) {
-                    thuStart = 0;
-                    thuEnd = 0;
-                }
-                if (x.getWorkingHoursFri() != null) {
-                    friMin = Integer.parseInt(x.getWorkingHoursFri().substring(0, 2));
-                    friMax = Integer.parseInt(x.getWorkingHoursFri().substring(6, 8));
-
-                    if (friMin < friStart) {
-                        friStart = friMin;
-                    }
-                    if (friMax > friEnd) {
-                        friEnd = friMax;
-                    }
-                }
-                if (friStart == 24 && friEnd == 0){
-                    friStart = 0;
-                    friEnd = 0;
-                }
-                if (x.getWorkingHoursSat() != null) {
-                    satMin = Integer.parseInt(x.getWorkingHoursSat().substring(0, 2));
-                    satMax = Integer.parseInt(x.getWorkingHoursSat().substring(6, 8));
-
-                    if (satMin < satStart) {
-                        satStart = satMin;
-                    }
-                    if (satMax > satEnd) {
-                        satEnd = satMax;
-                    }
-                }
-                if (satStart == 24 && satEnd == 0) {
-                    satStart = 0;
-                    satEnd = 0;
-                }
-                if (x.getWorkingHoursSun() != null) {
-                    sunMin = Integer.parseInt(x.getWorkingHoursSun().substring(0, 2));
-                    sunMax = Integer.parseInt(x.getWorkingHoursSun().substring(6, 8));
-
-                    if (sunMin < sunStart) {
-                        sunStart = sunMin;
-                    }
-                    if (sunMax > sunEnd) {
-                        sunEnd = sunMax;
-                    }
-                }
-                if (sunStart == 24 && sunEnd == 0) {
-                    sunStart = 0;
-                    sunEnd = 0;
-                }
-
-
-            }
-            List<Integer> monArray = WorkingHours.getSeparetedHours(monStart, monEnd);
-            model.addAttribute("hoursMondayOnService"+s.getId(), monArray);
-            List<Integer> tueArray = WorkingHours.getSeparetedHours(tueStart, tueEnd);
-            model.addAttribute("hoursTuesdayOnService"+s.getId(), tueArray);
-            List<Integer> wedArray = WorkingHours.getSeparetedHours(wedStart, wedEnd);
-            model.addAttribute("hoursWednesdayOnService"+s.getId(), wedArray);
-            List<Integer> thuArray = WorkingHours.getSeparetedHours(thuStart, thuEnd);
-            model.addAttribute("hoursThursdayOnService"+s.getId(), thuArray);
-            List<Integer> friArray = WorkingHours.getSeparetedHours(friStart, friEnd);
-            model.addAttribute("hoursFridayOnService"+s.getId(), friArray);
-            List<Integer> satArray = WorkingHours.getSeparetedHours(satStart, satEnd);
-            model.addAttribute("hoursSaturdayOnService"+s.getId(), satArray);
-            List<Integer> sunArray = WorkingHours.getSeparetedHours(sunStart, sunEnd);
-            model.addAttribute("hoursSundayOnService"+s.getId(), sunArray);
-
-        }
 
         return "reservation";
     }
@@ -223,10 +90,13 @@ public class HomeController {
         return "succes" + "<meta http-equiv=\"refresh\" content=\"3; url=http://localhost:8080/reservation\" />";
     }
 
-    @GetMapping("/sudoku")
-    public String sudo(Model model){
-        model.addAttribute("elo");
-        return "sudoku";
+    @PostMapping("/reservation")
+    public String sendBookedMinutes (@RequestParam("dayOfMonth") String dayOfMonth, Model model) {
+        System.out.println(dayOfMonth);
+
+        List<Service> services = serviceRepository.findAll();
+        model.addAttribute("services", services);
+        return "reservation";
     }
 
     @GetMapping("/main")
