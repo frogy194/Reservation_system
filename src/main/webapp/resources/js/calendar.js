@@ -4,7 +4,10 @@ $(document).ready(function () {
     $('#datetimepicker12').on('dp.change', function() {
 
         $(".inputhere").text($('#datetimepicker12').data('DateTimePicker').date().format('LL'));
-        $("#dayOfMonth").val($('#datetimepicker12').data('DateTimePicker').date().format('LL'));
+        $("#dayOfMonth").val($('#datetimepicker12').data('DateTimePicker').date().date());
+        $("#dayOfWeek").val($('#datetimepicker12').data('DateTimePicker').date().day());
+        $("#month").val($('#datetimepicker12').data('DateTimePicker').date().month());
+        $("#year").val($('#datetimepicker12').data('DateTimePicker').date().year());
         document.getElementById("formreserv").submit()
     });
 

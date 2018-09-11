@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: frogy
@@ -29,10 +30,11 @@
     </thead>
     <tr>
         <td class="hideme" >
-            <form id="formreserv" method="post">
+            <form method="post" id="formreserv">
                 <label>Choose your service :</label>
                 <br>
-                <select name="selectedserv">
+                <select name="selectedserv" path="empty">
+
                     <c:forEach items="${services}" var="service">
                         <option value="${service.id}">${service.name}</option>
                     </c:forEach>

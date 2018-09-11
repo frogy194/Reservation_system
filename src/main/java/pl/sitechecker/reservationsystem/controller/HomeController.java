@@ -91,9 +91,13 @@ public class HomeController {
     }
 
     @PostMapping("/reservation")
-    public String sendBookedMinutes (@RequestParam("dayOfMonth") String dayOfMonth, Model model) {
-        System.out.println(dayOfMonth);
-
+    public String sendBookedMinutes (@RequestParam("dayOfMonth") int dayOfMonth,@RequestParam("dayOfWeek") int dayOfWeek,@RequestParam("month") int month,@RequestParam("year") int year,@RequestParam("selectedserv") int selectedserv, Model model) {
+//        System.out.println(dayOfWeek);
+//        System.out.println(dayOfMonth);
+//        System.out.println(month);
+//        System.out.println(year);
+//        System.out.println(selectedserv);
+//     test
         List<Service> services = serviceRepository.findAll();
         model.addAttribute("services", services);
         return "reservation";
