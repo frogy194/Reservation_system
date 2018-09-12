@@ -26,6 +26,8 @@ import java.util.regex.Pattern;
 import java.util.Scanner;
 
 public class Test {
-
-
+    public static void main(String[] args) {
+        LocalDate s = LocalDate.now();
+        System.out.println(s.getYear());
+    }
 }

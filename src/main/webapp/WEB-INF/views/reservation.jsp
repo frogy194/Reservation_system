@@ -14,7 +14,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Reservations</title>
-
+    <script> var dayjs = ${dayOfMonth};
+            var monthjs = ${month};
+            var yearjs = ${year};
+            var hourjs = ${hour};
+            var minutejs = ${minute};
+            var idjs = ${selectedserv};
+    </script>
 
     <%@ include file="parts/header.jsp" %>
 </head>
@@ -43,6 +49,8 @@
                 <input id="dayOfMonth" name="dayOfMonth" value="0" hidden />
                 <input id="month" name="month" value="0" hidden />
                 <input id="year" name="year" value="0" hidden />
+                <input id="hour" name="hour" value="0" hidden />
+                <input id="minute" name="minute" value="0" hidden />
                 <input id="sub1" type="submit" value="Submit" hidden />
                 <br>
             </form>

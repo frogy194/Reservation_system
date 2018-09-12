@@ -1,3 +1,7 @@
+1.0.13
+ - selected date is saved while refreshing site.
+ - changed method for making separated hours (for use in future).
+
 1.0.12
  - added method for reservation to send selected date to server (still missing full responsive server method).
 

@@ -15,6 +15,7 @@ import pl.sitechecker.reservationsystem.repository.ServiceProviderRepository;
 import pl.sitechecker.reservationsystem.repository.ServiceRepository;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,13 @@ public class HomeController {
 
     @GetMapping("/reservation")
     public String reserv(Model model) {
-
+        LocalDate s = LocalDate.now();
+        model.addAttribute("dayOfMonth",s.getDayOfMonth());
+        model.addAttribute("month",s.getMonthValue());
+        model.addAttribute("year",s.getYear());
+        model.addAttribute("hour",12);
+        model.addAttribute("minute",0);
+        model.addAttribute("selectedserv", 1);
         List<Service> services = serviceRepository.findAll();
         model.addAttribute("services", services);
 
@@ -91,13 +98,13 @@ public class HomeController {
     }
 
     @PostMapping("/reservation")
-    public String sendBookedMinutes (@RequestParam("dayOfMonth") int dayOfMonth,@RequestParam("dayOfWeek") int dayOfWeek,@RequestParam("month") int month,@RequestParam("year") int year,@RequestParam("selectedserv") int selectedserv, Model model) {
-//        System.out.println(dayOfWeek);
-//        System.out.println(dayOfMonth);
-//        System.out.println(month);
-//        System.out.println(year);
-//        System.out.println(selectedserv);
-//     test
+    public String sendBookedMinutes (@RequestParam("dayOfMonth") int dayOfMonth,@RequestParam("dayOfWeek") int dayOfWeek,@RequestParam("month") int month,@RequestParam("year") int year,@RequestParam("hour") int hour,@RequestParam("minute") int minute,@RequestParam("selectedserv") int selectedserv, Model model) {
+        model.addAttribute("dayOfMonth",dayOfMonth);
+        model.addAttribute("month",month);
+        model.addAttribute("year",year);
+        model.addAttribute("minute",minute);
+        model.addAttribute("hour",hour);
+        model.addAttribute("selectedserv", selectedserv);
         List<Service> services = serviceRepository.findAll();
         model.addAttribute("services", services);
         return "reservation";
