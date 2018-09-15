@@ -98,7 +98,14 @@ public class HomeController {
     }
 
     @PostMapping("/reservation")
-    public String sendBookedMinutes (@RequestParam("dayOfMonth") int dayOfMonth,@RequestParam("dayOfWeek") int dayOfWeek,@RequestParam("month") int month,@RequestParam("year") int year,@RequestParam("hour") int hour,@RequestParam("minute") int minute,@RequestParam("selectedserv") int selectedserv, Model model) {
+    public String sendBookedMinutes (@RequestParam("dayOfMonth") int dayOfMonth,
+                                     @RequestParam("dayOfWeek") int dayOfWeek,
+                                     @RequestParam("month") int month,
+                                     @RequestParam("year") int year,
+                                     @RequestParam("hour") int hour,
+                                     @RequestParam("minute") int minute,
+                                     @RequestParam("selectedserv") int selectedserv,
+                                     Model model) {
         model.addAttribute("dayOfMonth",dayOfMonth);
         model.addAttribute("month",month);
         model.addAttribute("year",year);
@@ -106,6 +113,16 @@ public class HomeController {
         model.addAttribute("hour",hour);
         model.addAttribute("selectedserv", selectedserv);
         List<Service> services = serviceRepository.findAll();
+        List<Order> orders = orderRepository.findAllByDate(month + "/" + dayOfMonth + "/" + year);
+        Service oneService = serviceRepository.findById(selectedserv);
+        List<String> alreadyBooked = new ArrayList<>();
+        for (Order oneOrder : orders) {
+            alreadyBooked.add(oneOrder.getTime() + WorkingHours.addTime(oneOrder.getTime() , WorkingHours.changeDurationFromInt(oneService.getDuration())));
+
+        }
+        for (String s : alreadyBooked) {
+            System.out.println(s);
+        }
         model.addAttribute("services", services);
         return "reservation";
     }

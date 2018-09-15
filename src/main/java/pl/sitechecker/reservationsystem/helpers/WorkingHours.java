@@ -63,6 +63,52 @@ public class WorkingHours {
         return list;
     }
 
+    public static String changeDurationFromInt(int duration) {
+
+        String h1 = "";
+        String m1 = "";
+        int h = duration / 60;
+        int m = duration % 60;
+        if (h < 10) {
+            h1 = "0" + h;
+        }
+        if (m < 10) {
+            m1 = "0" + m;
+        }
+        return h1 + ":" + m1;
+
+    }
+
+    public static String addTime(String a, String b)
+
+    {
+
+        int hourSum = 0;
+
+        int hour1= Integer.parseInt(a.substring(0,2));
+
+        int hour2= Integer.parseInt(b.substring(0,2));
+
+        int min1= Integer.parseInt(a.substring(3,5));
+
+        int min2= Integer.parseInt(b.substring(3,5));
+
+        int minSum = min1 + min2;
+
+        if (minSum > 59) {
+
+            hourSum += 1;
+            minSum%=60;
+
+        }
+
+        hourSum = hourSum + hour1 + hour2;
+
+        return (hourSum+":"+minSum);
+
+    }
+
+
 
     public static void main(String[] args) {
 

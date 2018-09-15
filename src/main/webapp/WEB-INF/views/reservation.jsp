@@ -76,12 +76,9 @@
             </div>
 
         </td>
-        <td class="hideme" hidden>
-            <table>
-
-
-
-            </table>
+        <td>
+            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-success">Success</button>
         </td>
 
     </tr>
