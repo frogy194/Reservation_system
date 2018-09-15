@@ -115,14 +115,15 @@ public class HomeController {
         List<Service> services = serviceRepository.findAll();
         List<Order> orders = orderRepository.findAllByDate(month + "/" + dayOfMonth + "/" + year);
         Service oneService = serviceRepository.findById(selectedserv);
-        List<String> alreadyBooked = new ArrayList<>();
+        List<List<String>> alreadyBooked = new ArrayList<>();
         for (Order oneOrder : orders) {
-            alreadyBooked.add(oneOrder.getTime() + WorkingHours.addTime(oneOrder.getTime() , WorkingHours.changeDurationFromInt(oneService.getDuration())));
+            alreadyBooked.add(WorkingHours.getSeparatedHours(oneOrder.getTime(),WorkingHours.addTime(oneOrder.getTime() , WorkingHours.changeDurationFromInt(oneService.getDuration()))));
 
         }
-        for (String s : alreadyBooked) {
+        for (List<String> s : alreadyBooked) {
             System.out.println(s);
         }
+        // alreadyBooked lista listy stringów pojedynczych minut, ? zastanowic sie czy zostawiac w zakresach, czy w listach zarezerwowane godziny
         model.addAttribute("services", services);
         return "reservation";
     }

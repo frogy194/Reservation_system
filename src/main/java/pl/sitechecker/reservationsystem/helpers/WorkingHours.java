@@ -104,7 +104,21 @@ public class WorkingHours {
 
         hourSum = hourSum + hour1 + hour2;
 
-        return (hourSum+":"+minSum);
+        String hour = "";
+        String min = "";
+        if (minSum < 10) {
+           min = "0" + minSum;
+        } else {
+            min = "" + minSum;
+        }
+        if (hourSum < 10) {
+            hour = "0" + hourSum;
+        } else {
+            hour = "" + hourSum;
+        }
+
+
+        return (hour + ":" + min);
 
     }
 
