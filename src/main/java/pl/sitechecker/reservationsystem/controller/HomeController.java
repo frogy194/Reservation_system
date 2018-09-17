@@ -104,7 +104,7 @@ public class HomeController {
                                      @RequestParam("year") int year,
                                      @RequestParam("hour") int hour,
                                      @RequestParam("minute") int minute,
-                                     @RequestParam("selectedserv") int selectedserv,
+                                     @RequestParam("selectedserv") long selectedserv,
                                      Model model) {
         model.addAttribute("dayOfMonth",dayOfMonth);
         model.addAttribute("month",month);
@@ -113,7 +113,7 @@ public class HomeController {
         model.addAttribute("hour",hour);
         model.addAttribute("selectedserv", selectedserv);
         List<Service> services = serviceRepository.findAll();
-        List<Order> orders = orderRepository.findAllByDate(month + "/" + dayOfMonth + "/" + year);
+        List<Order> orders = orderRepository.findOrderByDateAndId(month + "/" + dayOfMonth + "/" + year, selectedserv);
         Service oneService = serviceRepository.findById(selectedserv);
         List<List<String>> alreadyBooked = new ArrayList<>();
         for (Order oneOrder : orders) {
