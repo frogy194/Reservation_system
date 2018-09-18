@@ -1,6 +1,7 @@
 package pl.sitechecker.reservationsystem.controller;
 
 
+import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,6 +53,7 @@ public class HomeController {
         model.addAttribute("hour",12);
         model.addAttribute("minute",0);
         model.addAttribute("selectedserv", 1);
+        model.addAttribute("status", "free");
         List<Service> services = serviceRepository.findAll();
         model.addAttribute("services", services);
 
@@ -113,15 +115,23 @@ public class HomeController {
         model.addAttribute("hour",hour);
         model.addAttribute("selectedserv", selectedserv);
         List<Service> services = serviceRepository.findAll();
-        List<Order> orders = orderRepository.findOrderByDateAndId(month + "/" + dayOfMonth + "/" + year, selectedserv);
+        List<Order> orders = orderRepository.findOrderByDateAndServiceId(month + "/" + dayOfMonth + "/" + year, selectedserv);
         Service oneService = serviceRepository.findById(selectedserv);
-        List<List<String>> alreadyBooked = new ArrayList<>();
+        List<String> alreadyBooked = new ArrayList<>();
+        String status = "";
         for (Order oneOrder : orders) {
-            alreadyBooked.add(WorkingHours.getSeparatedHours(oneOrder.getTime(),WorkingHours.addTime(oneOrder.getTime() , WorkingHours.changeDurationFromInt(oneService.getDuration()))));
+            alreadyBooked.add(oneOrder.getTimeInterval());
 
         }
-        for (List<String> s : alreadyBooked) {
-            System.out.println(s);
+        for (String s : alreadyBooked) {
+            if (WorkingHours.isBetweenTimeInterval(hour, minute, s)) {
+                status = "Booked";
+            }
+        }
+        if (status.equals("Booked")) {
+            model.addAttribute("status", "booked");
+        } else {
+            model.addAttribute("status", "free");
         }
         // alreadyBooked lista listy stringów pojedynczych minut, ? zastanowic sie czy zostawiac w zakresach, czy w listach zarezerwowane godziny
         model.addAttribute("services", services);

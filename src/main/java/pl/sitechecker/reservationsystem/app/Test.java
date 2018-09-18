@@ -27,35 +27,13 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
+        String elo = "13:56-12-56";
+
+        System.out.println(Integer.parseInt(elo.substring(0, 2)));
+        System.out.println(Integer.parseInt(elo.substring(3, 5)));
+        System.out.println(Integer.parseInt(elo.substring(6, 8)));
+        System.out.println(Integer.parseInt(elo.substring(9, 11)));
 
     }
-
-
-    static void minimumBribes(int[] q) {
-        int minimumBribes = 0;
-        for (int j = 0; j < 3; j++) {
-            for (int i = 0; i < q.length - 1; i++) {
-
-                if (q[i] > i + 3) {
-                    System.out.println("Too chaotic");
-                    return;
-                } else if (q[i] > q[i + 2]) {
-                    int hold = q[i+1];
-                    q[i+1] = q[i + 2];
-                    q[i + 2] = hold;
-                    minimumBribes++;
-                }  else if (q[i] > q[i + 1]) {
-                    int hold = q[i];
-                    q[i] = q[i + 1];
-                    q[i + 1] = hold;
-                    minimumBribes++;
-                }
-
-
-            }
-        }
-        System.out.println(minimumBribes);
-    }
-
 }
 

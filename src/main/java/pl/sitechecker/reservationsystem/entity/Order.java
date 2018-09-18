@@ -1,9 +1,11 @@
 package pl.sitechecker.reservationsystem.entity;
 
+import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
+import pl.sitechecker.reservationsystem.helpers.WorkingHours;
 import pl.sitechecker.reservationsystem.repository.ServiceProviderRepository;
 
 import javax.persistence.*;
@@ -19,8 +21,6 @@ import java.util.List;
 @Table(name = "orders")
 public class Order {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -29,11 +29,8 @@ public class Order {
     @Pattern(regexp = "\\d{1,2}\\/\\d{1,2}\\/\\d{4}")
     private String date;
     @NotNull
+    @Pattern(regexp = "\\d{2}:\\d{2}")
     private String time;
-
-//    private List<Service> services = new ArrayList<>();
-
-//    id usluga data godzina
 
     @OneToOne
     private Service service;
@@ -74,5 +71,11 @@ public class Order {
 
     public void setService(Service service) {
         this.service = service;
+    }
+
+    public String getTimeInterval() {
+       String timeAfterService = WorkingHours.addTime(this.getTime(),
+                WorkingHours.changeDurationFromInt(this.service.getDuration()));
+       return this.getTime() + "-" + timeAfterService ;
     }
 }

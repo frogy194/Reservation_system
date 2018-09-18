@@ -1,6 +1,9 @@
 package pl.sitechecker.reservationsystem.helpers;
 
+import org.springframework.cglib.core.Local;
+
 import javax.persistence.criteria.CriteriaBuilder;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -122,7 +125,15 @@ public class WorkingHours {
 
     }
 
+    public static boolean isBetweenTimeInterval (int hour, int minute, String timeInterval){
+        LocalTime toTest = LocalTime.of(hour, minute);
+        LocalTime start = LocalTime.of(Integer.parseInt(timeInterval.substring(0,2)),Integer.parseInt(timeInterval.substring(3,5)));
+        LocalTime end = LocalTime.of(Integer.parseInt(timeInterval.substring(6,8)),Integer.parseInt(timeInterval.substring(9,11)));
 
+        return (toTest.isAfter(start) && toTest.isBefore(end)) ;
+
+
+    }
 
     public static void main(String[] args) {
 
@@ -131,10 +142,6 @@ public class WorkingHours {
         System.out.println(getSeparatedHours("09:45", "11:15"));
         System.out.println(getSeparatedHours("12:5", "17:15"));
     }
-
-
-
-
 
 
 }

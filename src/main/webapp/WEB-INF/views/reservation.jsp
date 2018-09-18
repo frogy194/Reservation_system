@@ -20,6 +20,7 @@
             var hourjs = ${hour};
             var minutejs = ${minute};
             var idjs = ${selectedserv};
+            var status = '${status}';
     </script>
 
     <%@ include file="parts/header.jsp" %>
@@ -32,12 +33,11 @@
     <thead>
     <td>Calendar</td>
     <td class="inputhere"></td>
-    <td></td>
     </thead>
     <tr>
         <td class="hideme" >
             <form method="post" id="formreserv">
-                <label>Choose your service :</label>
+                <label>Choose your service:</label>
                 <br>
                 <select name="selectedserv" path="empty">
 
@@ -76,10 +76,13 @@
             </div>
 
         </td>
-        <td>
-            <button type="button" class="btn btn-primary">Primary</button>
-            <button type="button" class="btn btn-success">Success</button>
-        </td>
+        <tr>
+            <td>Status : ${status}</td>
+            <td>
+
+            <button id="first" type="button" class="btn btn-primary">Book</button>
+            </td>
+        </tr>
 
     </tr>
 </table>
