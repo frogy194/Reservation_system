@@ -79,8 +79,9 @@
         <tr>
             <td>Status : ${status}</td>
             <td>
-
-            <button id="first" type="button" class="btn btn-primary">Book</button>
+            <form action="/reservation/add/${month}/${dayOfMonth}/${year}/${hour}/${minute}/${selectedserv}/" method="get">
+            <button id="first" type="submit" class="btn btn-primary">Book</button>
+            </form>
             </td>
         </tr>
 

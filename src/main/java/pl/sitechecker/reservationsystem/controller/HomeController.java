@@ -72,23 +72,24 @@ public class HomeController {
         return "adm";
     }
 
-    @GetMapping("/reservation/add/{month}/{day}/{year}/{time}/{serviceid}")
+    @GetMapping("/reservation/add/{month}/{day}/{year}/{hour}/{minute}/{serviceid}/")
     public String addOrder(@PathVariable int month,
                            @PathVariable int day,
                            @PathVariable int year,
-                           @PathVariable String time,
+                           @PathVariable int hour,
+                           @PathVariable int minute,
                            @PathVariable long serviceid,
                            Model model) {
         Order order = new Order();
         order.setDate(month + "/" + day + "/" + year);
-        order.setTime(time);
+        order.setTime(hour + ":" + minute);
         order.setService(this.serviceRepository.findById(serviceid));
         model.addAttribute("order",order);
         model.addAttribute("services", this.serviceRepository.findAll());
         return "addorder";
     }
 
-    @PostMapping("/reservation/add/*/*/*/*/*")
+    @PostMapping("/reservation/add/*/*/*/*/*/*")
     @ResponseBody
     public String acceptOrder(@Valid Order order, BindingResult result) {
         if (result.hasErrors()) {

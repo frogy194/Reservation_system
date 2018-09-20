@@ -32,7 +32,7 @@
         </div>
 
         <div>
-           <c:out value="${order.service.name}"></c:out>
+            <form:select path="service" items="${services}"></form:select>
         </div>
 
             <input type="submit">
