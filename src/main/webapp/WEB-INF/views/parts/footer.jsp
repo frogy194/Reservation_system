@@ -14,8 +14,4 @@
         <span class="createdBy">Created by frogy </span>
     </div>
 </div>
-<script type="text/javascript" src="<c:url value="/resources/js/menubar.js" />"></script>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 

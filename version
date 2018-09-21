@@ -1,3 +1,8 @@
+1.0.2
+ - reservation is functional.
+ - some bugs when booking minutes are less than 10 (not accepting new order).
+ - need to change page after booking new order.
+
 1.0.13
  - selected date is saved while refreshing site.
  - changed method for making separated hours (for use in future).
