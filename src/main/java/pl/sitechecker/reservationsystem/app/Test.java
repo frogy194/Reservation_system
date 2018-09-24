@@ -27,16 +27,10 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
-        String elo = "13:56-12-56";
-        int[] arr = {4, 3, 1, 2};
-        int[] ars = {2, 1, 3, 5, 4, 6, 8};
-        System.out.println(insertionSort(arr));
+
 
 
     }
 
-    private static int insertionSort(int[] ar) {
-        return 1;
-    }
 }
 

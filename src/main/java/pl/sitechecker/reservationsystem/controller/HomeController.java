@@ -82,7 +82,18 @@ public class HomeController {
                            Model model) {
         Order order = new Order();
         order.setDate(month + "/" + day + "/" + year);
-        order.setTime(hour + ":" + minute);
+        String time = "";
+        if (hour < 10) {
+            time = "0" + hour;
+        } else {
+            time += hour;
+        }
+        if (minute < 10) {
+            time += ":0" + minute;
+        } else {
+            time += ":" + minute;
+        }
+        order.setTime(time);
         order.setService(this.serviceRepository.findById(serviceid));
         model.addAttribute("order",order);
         model.addAttribute("services", this.serviceRepository.findAll());

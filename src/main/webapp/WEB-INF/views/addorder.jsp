@@ -32,7 +32,9 @@
         </div>
 
         <div>
-            <form:select path="service" items="${services}"></form:select>
+            <form:select path="service" >
+                <form:options items="${services}" itemLabel="name" itemValue="id"/>
+            </form:select>
         </div>
 
             <input type="submit">
