@@ -19,18 +19,26 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.IntPredicate;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class Test {
+    private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
+        int s = scanner.nextInt();
+        IntPredicate checker = x -> x == s;
+        String[] toCheck = scanner.nextLine().trim().split(" ");
+        if (Arrays.stream(toCheck).mapToInt(Integer::parseInt).anyMatch(checker)) {
+                System.out.println("YES");
+                return;
 
-
-
+        }
+        System.out.println("NO");
     }
-
 }
 

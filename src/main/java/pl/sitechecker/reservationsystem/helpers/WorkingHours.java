@@ -130,7 +130,7 @@ public class WorkingHours {
         LocalTime start = LocalTime.of(Integer.parseInt(timeInterval.substring(0,2)),Integer.parseInt(timeInterval.substring(3,5)));
         LocalTime end = LocalTime.of(Integer.parseInt(timeInterval.substring(6,8)),Integer.parseInt(timeInterval.substring(9,11)));
 
-        return (toTest.isAfter(start) && toTest.isBefore(end)) ;
+        return ((toTest.isAfter(start) && toTest.isBefore(end)) || ((toTest == start) || toTest == end) ) ;
 
 
     }

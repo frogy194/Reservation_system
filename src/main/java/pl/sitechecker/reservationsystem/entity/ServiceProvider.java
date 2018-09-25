@@ -25,7 +25,7 @@ public class ServiceProvider {
     @Size(max = 15)
     private String name;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Service> services = new ArrayList<>();
 
 
@@ -56,9 +56,6 @@ public class ServiceProvider {
     @Pattern(regexp = "\\d\\d:\\d\\d-\\d\\d:\\d\\d")
     private String workingHoursSun;
 
-
-
-//    jakie uslugi, czas pracy w dany dzien, aktywny?, ile klientow
 
 
     public ServiceProvider() {

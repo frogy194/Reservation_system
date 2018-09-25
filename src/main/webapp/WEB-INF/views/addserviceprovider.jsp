@@ -30,9 +30,12 @@
                 <form:input path="clientsAtTime"></form:input>
             </div>
             <div>
-                <form:label path="services"> </form:label>
+                <form:label path="services">Services</form:label>
                 <br>
-                <form:checkboxes path="services" multiple="true" items="${services}" itemLabel="name" itemValue="id"></form:checkboxes>
+                <form:select path="services" >
+                    <form:options items="${services}" itemLabel="name" itemValue="id"/>
+                </form:select>
+                    <%--<form:checkboxes path="services" multiple="true" items="${services}" itemLabel="name" itemValue="id"></form:checkboxes>--%>
             </div>
             <label>Working hours (leave empty if free day) Format : 08:00-16:00 </label>
             <div>
